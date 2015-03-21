@@ -1,4 +1,4 @@
-#include "ofxDisplayManager.h"
+/*#include "ofxDisplayManager.h"
 #include "ofxDisplayMac.h"
 
 #import <Cocoa/Cocoa.h>
@@ -29,4 +29,4 @@ ofxDisplayList ofxDisplayManagerMac::getDisplays(){
 	}
 	
 	return displays;
-}	
+}*/	

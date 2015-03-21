@@ -9,7 +9,7 @@ ofxFensterCanvas::ofxFensterCanvas(){
 
 void ofxFensterCanvas::setScreenIndices(ofxScreen * screen, int index){
     screen->index.x = index % columns;
-    screen->index.y = floor(index / columns);
+    screen->index.y =(int) ((float)index / (float)columns);
 }
 
 void ofxFensterCanvas::setup(ofxFensterListener * listener, int _columns, int _rows, ofWindowMode screenMode){
@@ -108,10 +108,10 @@ bool compareScreens(ofxScreen * screen1, ofxScreen * screen2){
     double w1 = screen1->display->width;
     double w2 = screen2->display->width;
 
-    int row1 = round(y1 / h1);
-    int row2 = round(y2 / h2);
-    int col1 = round(x1 / w1);
-    int col2 = round(x2 / w2);
+    int row1 = (y1 / h1);
+    int row2 = (y2 / h2);
+    int col1 = (x1 / w1);
+    int col2 = (x2 / w2);
     
     return row1 < row2 || (row1 == row2 && col1 < col2);
 }
@@ -153,11 +153,11 @@ void ofxFensterCanvas::setupPerspectiveForActiveScreen(){
     
     float halfFovTan = tanf(PI * 60 / 360.0);
     float baseDist = (getHeight() / 2) / halfFovTan;
-    float near = baseDist / 10.f;
-    float far = baseDist * 10.f;
+    float nearr = baseDist / 10.f;
+    float farr = baseDist * 10.f;
     float aspect = (float) getWidth() / getHeight();
     
-    float wholeMaxY = near * halfFovTan;
+    float wholeMaxY = nearr * halfFovTan;
     float wholeMaxX = aspect * wholeMaxY;
     
     float width = (wholeMaxX / columns) * 2;
@@ -172,7 +172,7 @@ void ofxFensterCanvas::setupPerspectiveForActiveScreen(){
     
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glFrustum(minX, maxX, minY, maxY, near / rows, far / rows);
+    glFrustum(minX, maxX, minY, maxY, nearr / rows, farr / rows);
     
     glMatrixMode(GL_MODELVIEW);
     // FIXME: this doesn't work when the screens are different sizes

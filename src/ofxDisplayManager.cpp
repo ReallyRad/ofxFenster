@@ -98,13 +98,13 @@ ofxDisplayList ofxDisplayManagerWin::getDisplays()
     DISPLAY_DEVICE dd;
     dd.cb = sizeof(DISPLAY_DEVICE);
 
-     while (EnumDisplayDevices(0, numDisplayDevices, &dd, 0)){
+     //while (EnumDisplayDevices(0, numDisplayDevices, &dd, 0)){
         DISPLAY_DEVICE ddMon;
         ZeroMemory(&ddMon, sizeof(ddMon));
         ddMon.cb = sizeof(ddMon);
         int numMonitors = 0;
 
-        while (EnumDisplayDevices(dd.DeviceName, numMonitors, &ddMon, 0)){
+       //while (EnumDisplayDevices(dd.DeviceName, numMonitors, &ddMon, 0)){
             if (//ddMon.StateFlags & DISPLAY_DEVICE_ACTIVE && // this might be necessary on Win XP but is not for Vista/Win 7
                 !(ddMon.StateFlags & DISPLAY_DEVICE_MIRRORING_DRIVER)){
 
@@ -137,12 +137,12 @@ ofxDisplayList ofxDisplayManagerWin::getDisplays()
 
             ZeroMemory(&ddMon, sizeof(ddMon));
             ddMon.cb = sizeof(ddMon);
-        }
+        //}
 
         ZeroMemory(&dd, sizeof(dd));
         dd.cb = sizeof(dd);
         numDisplayDevices++;
-    }
+    //}
 
     return displays;
 
