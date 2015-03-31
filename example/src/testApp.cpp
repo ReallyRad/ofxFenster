@@ -5,17 +5,14 @@ ofVideoGrabber vidGrabber;
 void testApp::setup()
 {		
 	ofSetFrameRate(60);
-	vidGrabber.setDeviceID(1);
+	vidGrabber.setDeviceID(0);
 	vidGrabber.initGrabber(640,480);
 	ofBackground(0,0,0);
 	cout << "SETUP CALLED" << endl;
 	int winW=300;
 	
 	ofxFenster* win = ofxFensterManager::get()->createFenster(640, 480, OF_WINDOW);
-	win->addListener(this);	
-
-	ofxFenster* win2 = ofxFensterManager::get()->createFenster(640, 480, OF_WINDOW);
-	win2->addListener(this);	
+	win->addListener(this);		
 
 	/*for(int i=0; i<3; i++) {
 		ofxFenster* win=ofxFensterManager::get()->createFenster(400+(i*winW), 0, winW, 300, OF_WINDOW);
@@ -55,8 +52,12 @@ void testApp::update()
 //--------------------------------------------------------------
 void testApp::draw(ofxFenster* window)
 {	
-	  if(window->id == 0) ofSetColor(255,0,0); vidGrabber.draw(0,0);            
-      if(window->id == 1) ofSetColor(0,255,0); vidGrabber.draw(0,0);
+	  if(window->id == 0){
+		  ofSetColor(255,0,0); vidGrabber.draw(0,0);            
+	  }
+      if(window->id == 1) {
+		  ofSetColor(0,255,0); vidGrabber.draw(0,0);
+	  }
       //setup the second camera  
 }
 

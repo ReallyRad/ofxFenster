@@ -156,9 +156,9 @@ public:
 	inline const char *ReadPtr() const									{ return pData; }
 	inline float	ToFloat() const										{ float x=(float)(atof(pData)); return x; }
 	inline int		ToInt() const										{ return atoi(pData); }
-
+	
 	// Operators
-	inline rcSTR_String	operator=(const byte *rhs)						{ return Copy((const char *)rhs, strlen((const char *)rhs)); }
+//	inline rcSTR_String	operator=(const byte *rhs)						{ return Copy((const char *)rhs, strlen((const char *)rhs)); }
 	inline rcSTR_String	operator=(rcSTR_String rhs)						{ return Copy(rhs.ReadPtr(), rhs.Length()); }
 	inline rcSTR_String	operator=(char rhs)								{ return Copy(&rhs, 1); }
 	inline rcSTR_String	operator=(const char *rhs)						{ return Copy(rhs, strlen(rhs)); }
